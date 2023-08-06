@@ -34,8 +34,6 @@ class Mouser {
 
     onMouseDown(e) {
       
-      console.log({ fn:'onMouseDown', el: this.el, e })
-
       this.el.classList.add('clicked')
 
       let c = this.el.querySelector('.click-indicator')
@@ -48,14 +46,12 @@ class Mouser {
   //------------------------------------------------------------------------------
 
     onMouseUp(e) {
-      console.log({ fn:'onMouseUp', el: this.el, e })
       this.el.classList.remove('clicked')
     }
 
   //------------------------------------------------------------------------------
 
     onMouseMove(e) {
-      console.log({ fn:'onMouseMove', el: this.el, e })
       let doc = document.documentElement
     
       var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0)
