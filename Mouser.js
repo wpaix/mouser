@@ -142,7 +142,7 @@ class Mouser {
   
   set_shape(shape) {
     if( !shape ) return
-    this.el.querySelector('.shape').not('.'+shape).classList.remove('visible')
+    this.el.querySelector('.shape:not(.'+shape+')').classList.remove('visible')
     this.el.querySelector('.'+shape).classList.add('visible')
     this.presets.current.shape = shape
   }
@@ -154,7 +154,7 @@ class Mouser {
   
   set_color(color) {
     this.removeClassesStartingWith( this.el, 'color-' ); this.el.classList.add('color-'+color)
-    this.el.querySelector('svg, svg path').forEach((x)=>{ x.style.fill = color })
+    this.el.querySelectorAll('svg, svg path').forEach((x)=>{ x.style.fill = color })
     //document.querySelector('svg, svg path',this.el)
     this.presets.current.color = color
   }
@@ -168,7 +168,7 @@ class Mouser {
     if ( !stroke || stroke == '' || stroke == 'none' || stroke == 'transparent' ) stroke = false
     
     //document.documentElement.style.setProperty('--mouser-stroke-color', stroke)
-    this.el.querySelector('svg, svg path').forEach((x)=>{ x.style.stroke = stroke })
+    this.el.querySelectorAll('svg, svg path').forEach((x)=>{ x.style.stroke = stroke })
   
     this.el.classList.toggle('has-stroke',( stroke !== false && stroke !== 'none' && stroke !== 'transparent' ))
     this.presets.current.stroke = stroke
